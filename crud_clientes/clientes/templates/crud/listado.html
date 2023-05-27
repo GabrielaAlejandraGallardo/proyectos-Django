@@ -1,0 +1,57 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}Página Lista de Clientes {% endblock titulo %}
+    
+
+{% block contenido %}
+<div class="card">
+    <div class="card-header">
+        <a name="btnuevo" id="btnuevo" class="btn btn-primary" href="{% url 'crear' %}" role="button">Nuevo Cliente</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Clientes</h4>
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Dirección </th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Acciones</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    {% for cl in clientes %}
+                    <tr class="">
+                        <td>{{cl.id}} </td>
+                        <td>{{cl.nom}}</td>
+                        <td>{{cl.ap}}</td>
+                        <td>{{cl.dir}}</td>
+                        <td>
+                            <img src="{{cl.foto.url}}" height="60"></td>
+                        <td>
+                            <a name="bteditar" id="bteditar" class="btn btn-info" href="{% url 'editar' cl.id %}" role="button">Editar</a>
+                        
+                            <a name="bteliminar" id="btelimiar" class="btn btn-danger" href="{% url 'eliminar' cl.id %}" role="button">Elimiar</a>
+                        </td>
+                    </tr>
+                    {% endfor %} 
+
+                        
+                        
+
+                  
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock contenido %}
+    
